@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = "./;proto";
+
+service Comment {
+  rpc Insert (CommentBaseInfo) returns (Response) {}
+}
+
+message CommentBaseInfo {
+  int64 pid = 1;
+  int64 article_id = 2;
+  string name = 3;
+  string email = 4;
+  string url = 5;
+  string content = 6;
+}
+
+message Response {
+    int32 code = 1;
+    string msg = 2;
+    string data = 3;
+}
