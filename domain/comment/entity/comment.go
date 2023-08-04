@@ -18,6 +18,7 @@ type Comment struct {
 
 func (a *Comment) Create() {
 	a.CreateTime = time.Now()
+	a.UpdateTime = time.Now()
 }
 
 func (a *Comment) Update() {
