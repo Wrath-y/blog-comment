@@ -3,12 +3,23 @@ syntax = "proto3";
 option go_package = "./;proto";
 
 service Comment {
-  rpc Insert (CommentBaseInfo) returns (Response) {}
+  rpc GetComments (GetCommentsReq) returns (Response) {}
+  rpc GetCountByArticleId (OnlyArticleIdReq) returns (Response) {}
+  rpc AddComment (AddCommentReq) returns (Response) {}
 }
 
-message CommentBaseInfo {
-  int64 pid = 1;
-  int64 article_id = 2;
+message GetCommentsReq {
+  int64 article_id = 1;
+  int64 id = 2;
+}
+
+message OnlyArticleIdReq {
+  int64 article_id = 1;
+}
+
+message AddCommentReq {
+  int64 article_id = 1;
+  int64 pid = 2;
   string name = 3;
   string email = 4;
   string url = 5;

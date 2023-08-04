@@ -24,21 +24,17 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type CommentBaseInfo struct {
+type GetCommentsReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Pid       int64  `protobuf:"varint,1,opt,name=pid,proto3" json:"pid,omitempty"`
-	ArticleId int64  `protobuf:"varint,2,opt,name=article_id,json=articleId,proto3" json:"article_id,omitempty"`
-	Name      string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Email     string `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
-	Url       string `protobuf:"bytes,5,opt,name=url,proto3" json:"url,omitempty"`
-	Content   string `protobuf:"bytes,6,opt,name=content,proto3" json:"content,omitempty"`
+	ArticleId int64 `protobuf:"varint,1,opt,name=article_id,json=articleId,proto3" json:"article_id,omitempty"`
+	Id        int64 `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *CommentBaseInfo) Reset() {
-	*x = CommentBaseInfo{}
+func (x *GetCommentsReq) Reset() {
+	*x = GetCommentsReq{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_interfaces_proto_comment_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -46,13 +42,13 @@ func (x *CommentBaseInfo) Reset() {
 	}
 }
 
-func (x *CommentBaseInfo) String() string {
+func (x *GetCommentsReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CommentBaseInfo) ProtoMessage() {}
+func (*GetCommentsReq) ProtoMessage() {}
 
-func (x *CommentBaseInfo) ProtoReflect() protoreflect.Message {
+func (x *GetCommentsReq) ProtoReflect() protoreflect.Message {
 	mi := &file_interfaces_proto_comment_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -64,47 +60,153 @@ func (x *CommentBaseInfo) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CommentBaseInfo.ProtoReflect.Descriptor instead.
-func (*CommentBaseInfo) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetCommentsReq.ProtoReflect.Descriptor instead.
+func (*GetCommentsReq) Descriptor() ([]byte, []int) {
 	return file_interfaces_proto_comment_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CommentBaseInfo) GetPid() int64 {
-	if x != nil {
-		return x.Pid
-	}
-	return 0
-}
-
-func (x *CommentBaseInfo) GetArticleId() int64 {
+func (x *GetCommentsReq) GetArticleId() int64 {
 	if x != nil {
 		return x.ArticleId
 	}
 	return 0
 }
 
-func (x *CommentBaseInfo) GetName() string {
+func (x *GetCommentsReq) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type OnlyArticleIdReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ArticleId int64 `protobuf:"varint,1,opt,name=article_id,json=articleId,proto3" json:"article_id,omitempty"`
+}
+
+func (x *OnlyArticleIdReq) Reset() {
+	*x = OnlyArticleIdReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_interfaces_proto_comment_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *OnlyArticleIdReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OnlyArticleIdReq) ProtoMessage() {}
+
+func (x *OnlyArticleIdReq) ProtoReflect() protoreflect.Message {
+	mi := &file_interfaces_proto_comment_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OnlyArticleIdReq.ProtoReflect.Descriptor instead.
+func (*OnlyArticleIdReq) Descriptor() ([]byte, []int) {
+	return file_interfaces_proto_comment_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *OnlyArticleIdReq) GetArticleId() int64 {
+	if x != nil {
+		return x.ArticleId
+	}
+	return 0
+}
+
+type AddCommentReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ArticleId int64  `protobuf:"varint,1,opt,name=article_id,json=articleId,proto3" json:"article_id,omitempty"`
+	Pid       int64  `protobuf:"varint,2,opt,name=pid,proto3" json:"pid,omitempty"`
+	Name      string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Email     string `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
+	Url       string `protobuf:"bytes,5,opt,name=url,proto3" json:"url,omitempty"`
+	Content   string `protobuf:"bytes,6,opt,name=content,proto3" json:"content,omitempty"`
+}
+
+func (x *AddCommentReq) Reset() {
+	*x = AddCommentReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_interfaces_proto_comment_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AddCommentReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddCommentReq) ProtoMessage() {}
+
+func (x *AddCommentReq) ProtoReflect() protoreflect.Message {
+	mi := &file_interfaces_proto_comment_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddCommentReq.ProtoReflect.Descriptor instead.
+func (*AddCommentReq) Descriptor() ([]byte, []int) {
+	return file_interfaces_proto_comment_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *AddCommentReq) GetArticleId() int64 {
+	if x != nil {
+		return x.ArticleId
+	}
+	return 0
+}
+
+func (x *AddCommentReq) GetPid() int64 {
+	if x != nil {
+		return x.Pid
+	}
+	return 0
+}
+
+func (x *AddCommentReq) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-func (x *CommentBaseInfo) GetEmail() string {
+func (x *AddCommentReq) GetEmail() string {
 	if x != nil {
 		return x.Email
 	}
 	return ""
 }
 
-func (x *CommentBaseInfo) GetUrl() string {
+func (x *AddCommentReq) GetUrl() string {
 	if x != nil {
 		return x.Url
 	}
 	return ""
 }
 
-func (x *CommentBaseInfo) GetContent() string {
+func (x *AddCommentReq) GetContent() string {
 	if x != nil {
 		return x.Content
 	}
@@ -124,7 +226,7 @@ type Response struct {
 func (x *Response) Reset() {
 	*x = Response{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_interfaces_proto_comment_proto_msgTypes[1]
+		mi := &file_interfaces_proto_comment_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -137,7 +239,7 @@ func (x *Response) String() string {
 func (*Response) ProtoMessage() {}
 
 func (x *Response) ProtoReflect() protoreflect.Message {
-	mi := &file_interfaces_proto_comment_proto_msgTypes[1]
+	mi := &file_interfaces_proto_comment_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -150,7 +252,7 @@ func (x *Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Response.ProtoReflect.Descriptor instead.
 func (*Response) Descriptor() ([]byte, []int) {
-	return file_interfaces_proto_comment_proto_rawDescGZIP(), []int{1}
+	return file_interfaces_proto_comment_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Response) GetCode() int32 {
@@ -179,25 +281,39 @@ var File_interfaces_proto_comment_proto protoreflect.FileDescriptor
 var file_interfaces_proto_comment_proto_rawDesc = []byte{
 	0x0a, 0x1e, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x73, 0x2f, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x22, 0x98, 0x01, 0x0a, 0x0f, 0x43, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x42, 0x61, 0x73, 0x65,
-	0x49, 0x6e, 0x66, 0x6f, 0x12, 0x10, 0x0a, 0x03, 0x70, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x03, 0x70, 0x69, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x72, 0x74, 0x69, 0x63, 0x6c,
-	0x65, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x61, 0x72, 0x74, 0x69,
-	0x63, 0x6c, 0x65, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x65, 0x6d, 0x61,
-	0x69, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12,
-	0x10, 0x0a, 0x03, 0x75, 0x72, 0x6c, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x72,
-	0x6c, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x18, 0x06, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x07, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x22, 0x44, 0x0a, 0x08, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6d,
-	0x73, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6d, 0x73, 0x67, 0x12, 0x12, 0x0a,
-	0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x61, 0x74,
-	0x61, 0x32, 0x32, 0x0a, 0x07, 0x43, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x12, 0x27, 0x0a, 0x06,
-	0x49, 0x6e, 0x73, 0x65, 0x72, 0x74, 0x12, 0x10, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74,
-	0x42, 0x61, 0x73, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x1a, 0x09, 0x2e, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x0a, 0x5a, 0x08, 0x2e, 0x2f, 0x3b, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x22, 0x3f, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x52,
+	0x65, 0x71, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x72, 0x74, 0x69, 0x63, 0x6c, 0x65, 0x5f, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x61, 0x72, 0x74, 0x69, 0x63, 0x6c, 0x65, 0x49,
+	0x64, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69,
+	0x64, 0x22, 0x31, 0x0a, 0x10, 0x4f, 0x6e, 0x6c, 0x79, 0x41, 0x72, 0x74, 0x69, 0x63, 0x6c, 0x65,
+	0x49, 0x64, 0x52, 0x65, 0x71, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x72, 0x74, 0x69, 0x63, 0x6c, 0x65,
+	0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x61, 0x72, 0x74, 0x69, 0x63,
+	0x6c, 0x65, 0x49, 0x64, 0x22, 0x96, 0x01, 0x0a, 0x0d, 0x41, 0x64, 0x64, 0x43, 0x6f, 0x6d, 0x6d,
+	0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x72, 0x74, 0x69, 0x63, 0x6c,
+	0x65, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x61, 0x72, 0x74, 0x69,
+	0x63, 0x6c, 0x65, 0x49, 0x64, 0x12, 0x10, 0x0a, 0x03, 0x70, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x03, 0x70, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x65,
+	0x6d, 0x61, 0x69, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69,
+	0x6c, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x72, 0x6c, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
+	0x75, 0x72, 0x6c, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x18, 0x06,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x22, 0x44, 0x0a,
+	0x08, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x12, 0x10, 0x0a,
+	0x03, 0x6d, 0x73, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6d, 0x73, 0x67, 0x12,
+	0x12, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64,
+	0x61, 0x74, 0x61, 0x32, 0x98, 0x01, 0x0a, 0x07, 0x43, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x12,
+	0x2b, 0x0a, 0x0b, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x12, 0x0f,
+	0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x52, 0x65, 0x71, 0x1a,
+	0x09, 0x2e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x35, 0x0a, 0x13,
+	0x47, 0x65, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x42, 0x79, 0x41, 0x72, 0x74, 0x69, 0x63, 0x6c,
+	0x65, 0x49, 0x64, 0x12, 0x11, 0x2e, 0x4f, 0x6e, 0x6c, 0x79, 0x41, 0x72, 0x74, 0x69, 0x63, 0x6c,
+	0x65, 0x49, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x09, 0x2e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x22, 0x00, 0x12, 0x29, 0x0a, 0x0a, 0x41, 0x64, 0x64, 0x43, 0x6f, 0x6d, 0x6d, 0x65, 0x6e,
+	0x74, 0x12, 0x0e, 0x2e, 0x41, 0x64, 0x64, 0x43, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x65,
+	0x71, 0x1a, 0x09, 0x2e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x0a,
+	0x5a, 0x08, 0x2e, 0x2f, 0x3b, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -212,16 +328,22 @@ func file_interfaces_proto_comment_proto_rawDescGZIP() []byte {
 	return file_interfaces_proto_comment_proto_rawDescData
 }
 
-var file_interfaces_proto_comment_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_interfaces_proto_comment_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_interfaces_proto_comment_proto_goTypes = []interface{}{
-	(*CommentBaseInfo)(nil), // 0: CommentBaseInfo
-	(*Response)(nil),        // 1: Response
+	(*GetCommentsReq)(nil),   // 0: GetCommentsReq
+	(*OnlyArticleIdReq)(nil), // 1: OnlyArticleIdReq
+	(*AddCommentReq)(nil),    // 2: AddCommentReq
+	(*Response)(nil),         // 3: Response
 }
 var file_interfaces_proto_comment_proto_depIdxs = []int32{
-	0, // 0: Comment.Insert:input_type -> CommentBaseInfo
-	1, // 1: Comment.Insert:output_type -> Response
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	0, // 0: Comment.GetComments:input_type -> GetCommentsReq
+	1, // 1: Comment.GetCountByArticleId:input_type -> OnlyArticleIdReq
+	2, // 2: Comment.AddComment:input_type -> AddCommentReq
+	3, // 3: Comment.GetComments:output_type -> Response
+	3, // 4: Comment.GetCountByArticleId:output_type -> Response
+	3, // 5: Comment.AddComment:output_type -> Response
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -234,7 +356,7 @@ func file_interfaces_proto_comment_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_interfaces_proto_comment_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CommentBaseInfo); i {
+			switch v := v.(*GetCommentsReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -246,6 +368,30 @@ func file_interfaces_proto_comment_proto_init() {
 			}
 		}
 		file_interfaces_proto_comment_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*OnlyArticleIdReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_interfaces_proto_comment_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AddCommentReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_interfaces_proto_comment_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Response); i {
 			case 0:
 				return &v.state
@@ -264,7 +410,7 @@ func file_interfaces_proto_comment_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_interfaces_proto_comment_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -290,7 +436,9 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type CommentClient interface {
-	Insert(ctx context.Context, in *CommentBaseInfo, opts ...grpc.CallOption) (*Response, error)
+	GetComments(ctx context.Context, in *GetCommentsReq, opts ...grpc.CallOption) (*Response, error)
+	GetCountByArticleId(ctx context.Context, in *OnlyArticleIdReq, opts ...grpc.CallOption) (*Response, error)
+	AddComment(ctx context.Context, in *AddCommentReq, opts ...grpc.CallOption) (*Response, error)
 }
 
 type commentClient struct {
@@ -301,9 +449,27 @@ func NewCommentClient(cc grpc.ClientConnInterface) CommentClient {
 	return &commentClient{cc}
 }
 
-func (c *commentClient) Insert(ctx context.Context, in *CommentBaseInfo, opts ...grpc.CallOption) (*Response, error) {
+func (c *commentClient) GetComments(ctx context.Context, in *GetCommentsReq, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := c.cc.Invoke(ctx, "/Comment/Insert", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/Comment/GetComments", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *commentClient) GetCountByArticleId(ctx context.Context, in *OnlyArticleIdReq, opts ...grpc.CallOption) (*Response, error) {
+	out := new(Response)
+	err := c.cc.Invoke(ctx, "/Comment/GetCountByArticleId", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *commentClient) AddComment(ctx context.Context, in *AddCommentReq, opts ...grpc.CallOption) (*Response, error) {
+	out := new(Response)
+	err := c.cc.Invoke(ctx, "/Comment/AddComment", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -312,35 +478,79 @@ func (c *commentClient) Insert(ctx context.Context, in *CommentBaseInfo, opts ..
 
 // CommentServer is the server API for Comment service.
 type CommentServer interface {
-	Insert(context.Context, *CommentBaseInfo) (*Response, error)
+	GetComments(context.Context, *GetCommentsReq) (*Response, error)
+	GetCountByArticleId(context.Context, *OnlyArticleIdReq) (*Response, error)
+	AddComment(context.Context, *AddCommentReq) (*Response, error)
 }
 
 // UnimplementedCommentServer can be embedded to have forward compatible implementations.
 type UnimplementedCommentServer struct {
 }
 
-func (*UnimplementedCommentServer) Insert(context.Context, *CommentBaseInfo) (*Response, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Insert not implemented")
+func (*UnimplementedCommentServer) GetComments(context.Context, *GetCommentsReq) (*Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetComments not implemented")
+}
+func (*UnimplementedCommentServer) GetCountByArticleId(context.Context, *OnlyArticleIdReq) (*Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCountByArticleId not implemented")
+}
+func (*UnimplementedCommentServer) AddComment(context.Context, *AddCommentReq) (*Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddComment not implemented")
 }
 
 func RegisterCommentServer(s *grpc.Server, srv CommentServer) {
 	s.RegisterService(&_Comment_serviceDesc, srv)
 }
 
-func _Comment_Insert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CommentBaseInfo)
+func _Comment_GetComments_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCommentsReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CommentServer).Insert(ctx, in)
+		return srv.(CommentServer).GetComments(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/Comment/Insert",
+		FullMethod: "/Comment/GetComments",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommentServer).Insert(ctx, req.(*CommentBaseInfo))
+		return srv.(CommentServer).GetComments(ctx, req.(*GetCommentsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Comment_GetCountByArticleId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(OnlyArticleIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommentServer).GetCountByArticleId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/Comment/GetCountByArticleId",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommentServer).GetCountByArticleId(ctx, req.(*OnlyArticleIdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Comment_AddComment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddCommentReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommentServer).AddComment(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/Comment/AddComment",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommentServer).AddComment(ctx, req.(*AddCommentReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -350,8 +560,16 @@ var _Comment_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*CommentServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Insert",
-			Handler:    _Comment_Insert_Handler,
+			MethodName: "GetComments",
+			Handler:    _Comment_GetComments_Handler,
+		},
+		{
+			MethodName: "GetCountByArticleId",
+			Handler:    _Comment_GetCountByArticleId_Handler,
+		},
+		{
+			MethodName: "AddComment",
+			Handler:    _Comment_AddComment_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
