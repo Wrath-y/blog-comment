@@ -2,7 +2,7 @@ package resp
 
 import (
 	"bytes"
-	"comment/infrastructure/util/errcode"
+	"comment/infrastructure/common/errcode"
 	"comment/infrastructure/util/util/highperf"
 	"comment/interfaces/proto"
 	"encoding/json"
