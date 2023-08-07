@@ -8,7 +8,7 @@ import (
 
 type CommentApplicationService struct {
 	*context.Context
-	service.CommentDomainService
+	commentDomainService service.CommentDomainService
 }
 
 func NewCommentApplicationService(ctx *context.Context) *CommentApplicationService {
@@ -18,6 +18,14 @@ func NewCommentApplicationService(ctx *context.Context) *CommentApplicationServi
 	}
 }
 
-func (a *CommentApplicationService) Insert(comment entity.Comment) error {
-	return a.CommentDomainService.Insert(comment)
+func (c *CommentApplicationService) GetComments(articleId, id int64, limit int8) ([]entity.Comment, error) {
+	return c.commentDomainService.GetComments(articleId, id, limit)
+}
+
+func (c *CommentApplicationService) GetCountByArticleId(articleId int64) (int64, error) {
+	return c.commentDomainService.GetCountByArticleId(articleId)
+}
+
+func (c *CommentApplicationService) AddComment(comment entity.Comment) error {
+	return c.commentDomainService.Insert(comment)
 }

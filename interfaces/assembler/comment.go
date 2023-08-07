@@ -6,29 +6,24 @@ import (
 	"comment/interfaces/proto"
 )
 
-func ToEntity(comment dto.Comment) entity.Comment {
-	return entity.Comment{
-		Pid:       comment.Pid,
-		ArticleId: comment.ArticleId,
-		Name:      comment.Name,
-		Email:     comment.Email,
-		Url:       comment.Url,
-		Content:   comment.Content,
+func ToDTOs(comments []entity.Comment) []dto.Comment {
+	list := make([]dto.Comment, 0, len(comments))
+	for _, v := range comments {
+		list = append(list, dto.Comment{
+			Id:         v.Id,
+			Pid:        v.Pid,
+			ArticleId:  v.ArticleId,
+			Name:       v.Name,
+			Email:      v.Email,
+			Url:        v.Url,
+			Content:    v.Content,
+			CreateTime: v.CreateTime,
+		})
 	}
+	return list
 }
 
-func ToDTO(comment entity.Comment) dto.Comment {
-	return dto.Comment{
-		Pid:       comment.Pid,
-		ArticleId: comment.ArticleId,
-		Name:      comment.Name,
-		Email:     comment.Email,
-		Url:       comment.Url,
-		Content:   comment.Content,
-	}
-}
-
-func AddCommentReqToEntity(comment *proto.AddCommentReq) entity.Comment {
+func ToEntity(comment *proto.AddCommentReq) entity.Comment {
 	return entity.Comment{
 		Pid:       comment.Pid,
 		ArticleId: comment.ArticleId,

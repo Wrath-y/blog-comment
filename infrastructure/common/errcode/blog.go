@@ -8,5 +8,8 @@ var (
 )
 
 var (
-	CommentInsertFailed = &ErrCode{40300, "评论发布失败", ""}
+	CommentInsertFailed   = &ErrCode{40300, "评论发布失败", ""}
+	CommentsGetFailed     = &ErrCode{40301, "评论列表获取失败", ""}
+	CommentCountGetFailed = &ErrCode{40302, "评论数量获取失败", ""}
+	CommentArticleIdErr   = &ErrCode{40303, "articleId异常", ""}
 )
