@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"comment/infrastructure/common/errcode"
 	"comment/infrastructure/util/util/highperf"
+	"comment/interfaces/dto"
 	"comment/interfaces/proto"
 	"encoding/json"
 	"strconv"
@@ -13,9 +14,6 @@ func Success(data any) (*proto.Response, error) {
 	res := &proto.Response{
 		Code: 0,
 		Msg:  "success",
-	}
-	if data == nil {
-		data = struct{}{}
 	}
 	switch data.(type) {
 	case int8:
@@ -28,6 +26,10 @@ func Success(data any) (*proto.Response, error) {
 		res.Data = strconv.FormatInt(data.(int64), 10)
 	case string:
 		res.Data = data.(string)
+	case nil:
+		res.Data = ""
+	case dto.H:
+		res.Data = ""
 	default:
 		buf := bytes.NewBuffer(nil)
 		enc := json.NewEncoder(buf)
