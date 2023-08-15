@@ -1,6 +1,10 @@
 syntax = "proto3";
 
+package proto;  // 声明所在包
+
 option go_package = "./;proto";
+
+import "interfaces/proto/common.proto";
 
 service Comment {
   rpc GetComments (GetCommentsReq) returns (Response) {}
@@ -24,10 +28,4 @@ message AddCommentReq {
   string email = 4;
   string url = 5;
   string content = 6;
-}
-
-message Response {
-    int32 code = 1;
-    string msg = 2;
-    string data = 3;
 }
