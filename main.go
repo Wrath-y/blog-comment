@@ -4,7 +4,6 @@ import (
 	"comment/infrastructure/config"
 	"comment/infrastructure/util/consul"
 	"comment/infrastructure/util/db"
-	"comment/infrastructure/util/def"
 	"comment/infrastructure/util/goredis"
 	"comment/infrastructure/util/logging"
 	"comment/launch/grpc"
@@ -32,17 +31,11 @@ func setupConfigYaml() {
 	config.SetupNacosClient()
 	config.DownloadNacosConfig()
 
-	env := viper.GetString("app.env")
-	if env != def.EnvDevelopment && env != def.EnvTesting && env != def.EnvProduction {
-		log.Fatal("app.env异常")
-	}
-	// 监听nacos（已经被使用的变量变了也不会体现出变化）
-	config.ListenNacos(func(cnf string) {
-		if env == def.EnvDevelopment || env == def.EnvTesting || env == def.EnvProduction {
-			return
-		}
+	// 未使用k8s部署时监听nacos（已经被使用的变量不会体现出变化）
+	//config.ListenNacos()
 
-		// when use k8s
+	// 使用k8s部署时监听nacos（已经被使用的变量不会体现出变化）
+	config.ListenNacos(func(cnf string) {
 		log.Println("当前进程将被停止")
 		syscall.Kill(syscall.Getpid(), syscall.SIGTERM)
 	})
