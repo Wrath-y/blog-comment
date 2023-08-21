@@ -22,7 +22,7 @@ import (
 )
 
 func RunGrpc() {
-	lis, err := net.Listen("tcp", "0.0.0.0:8080")
+	lis, err := net.Listen("tcp", "0.0.0.0:8000")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
