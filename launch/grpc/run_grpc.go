@@ -77,7 +77,23 @@ func RunGrpc() {
 }
 
 func registerService() {
-	serviceInstance := consul.NewServiceInstance(strconv.FormatInt(time.Now().Unix(), 10), "comment", "grpc", "docker.for.mac.host.internal", 8080, false, map[string]string{})
+	addrs, err := net.InterfaceAddrs()
+	if err != nil {
+		log.Fatal("获取IP地址失败:", err.Error())
+	}
+	ip := ""
+	// 排除回环地址和IPv6地址，只输出本机的IPv4地址
+	for _, addr := range addrs {
+		if ipnet, ok := addr.(*net.IPNet); ok && !ipnet.IP.IsLoopback() && ipnet.IP.To4() != nil {
+			log.Println("本机IP地址:", ipnet.IP.String())
+			ip = ipnet.IP.String()
+			break
+		}
+	}
+	if ip == "" {
+		log.Fatal("IP地址未获取到:", err.Error())
+	}
+	serviceInstance := consul.NewServiceInstance(strconv.FormatInt(time.Now().Unix(), 10), "comment", "grpc", ip, 8000, false, map[string]string{})
 	if err := consul.Client.Register(serviceInstance); err != nil {
 		log.Fatalf("consul.Register err: %v", err)
 	}
