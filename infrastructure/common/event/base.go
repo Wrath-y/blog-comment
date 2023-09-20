@@ -1,7 +1,7 @@
 package event
 
 import (
-	"encoding/json"
+	"github.com/bytedance/sonic"
 	"time"
 )
 
@@ -18,7 +18,7 @@ func NewBasePublisher() PublisherI {
 
 func (b *Base) Publish() error {
 	// send to mq
-	bt, err := json.Marshal(b)
+	bt, err := sonic.Marshal(b)
 	if err != nil {
 		return err
 	}
